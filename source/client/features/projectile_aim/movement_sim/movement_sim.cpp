@@ -251,7 +251,7 @@ void c_movement_sim::draw_path( ) {
 			if (!tf2::world_to_screen(rotated, rotated_screen))
 				continue;
 
-			render->line(start_screen.m_x, start_screen.m_y, rotated_screen.m_x, rotated_screen.m_y, color(235, 235, 235, alpha));
+			render->line(start_screen.m_x, start_screen.m_y, end_screen.m_x, end_screen.m_y, color(255, 255, 255, 255));
 		}
 
 	}
