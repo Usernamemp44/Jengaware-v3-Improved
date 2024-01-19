@@ -211,7 +211,6 @@ void c_movement_sim::draw_path( ) {
 	if ( !config->m_projectile_aim.m_draw_prediction_path || m_positions.empty( ) || ( ctx->m_engine_client->time( ) > m_time_stamp + 5.0f ) )
 		return;
 
-<<<<<<< HEAD
 	for (auto i = 1u; i < m_positions.size(); i++) {
 		const auto& start = m_positions[i - 1];
 		const auto& end = m_positions[i];
@@ -234,28 +233,28 @@ void c_movement_sim::draw_path( ) {
 
 
 	}
-=======
-	for ( auto i = 1u; i < m_positions.size( ); i++ ) {
-		const auto& start = m_positions[ i - 1 ];
-		const auto& end = m_positions[ i ];
 
-		auto start_screen = vector( ), end_screen = vector( );
+	for (auto i = 1u; i < m_positions.size(); i++) {
+		const auto& start = m_positions[i - 1];
+		const auto& end = m_positions[i];
 
-		if ( !tf2::world_to_screen( start, start_screen ) || !tf2::world_to_screen( end, end_screen ) )
+		auto start_screen = vector(), end_screen = vector();
+
+		if (!tf2::world_to_screen(start, start_screen) || !tf2::world_to_screen(end, end_screen))
 			continue;
 
-		auto alpha = static_cast< int >( math::remap_val_clamped( ctx->m_engine_client->time( ) - m_time_stamp, 4.0f, 5.0f, 255.0f, 0.0f ) );
+		auto alpha = static_cast<int>(math::remap_val_clamped(ctx->m_engine_client->time() - m_time_stamp, 4.0f, 5.0f, 255.0f, 0.0f));
 
-		if ( ( i % 5 ) == 0 ) {
-			auto rotated = math::get_rotated_position( end, math::direction_to_angles( start - end ).m_y + 90.0f, 10.0f ), rotated_screen = vector( );
+		if ((i % 5) == 0) {
+			auto rotated = math::get_rotated_position(end, math::direction_to_angles(start - end).m_y + 90.0f, 10.0f), rotated_screen = vector();
 
-			if ( !tf2::world_to_screen( rotated, rotated_screen ) )
+			if (!tf2::world_to_screen(rotated, rotated_screen))
 				continue;
 
-			render->line( start_screen.m_x, start_screen.m_y, rotated_screen.m_x, rotated_screen.m_y, color( 235, 235, 235, alpha ) );
+			render->line(start_screen.m_x, start_screen.m_y, rotated_screen.m_x, rotated_screen.m_y, color(235, 235, 235, alpha));
 		}
 
+	}
 		
-	
->>>>>>> d1482ce55544bed3ac9c6e3537aab20ed5139f99
+
 }
